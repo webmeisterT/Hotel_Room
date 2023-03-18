@@ -16,6 +16,10 @@ function calculatePrice(month, days) {
         return false;
     }
     if (month === 'May' || month === 'October') {
+        if (days > 31) {
+            console.log("Please enter a valid number of days not greater than 31");
+            return false;
+        }
         studioPrice = 50;
         apartmentPrice = 65;
         totalStudio = (days > 7 && days <= 14) ? (studioPrice * days) - (studioPrice * days * .05)
@@ -25,6 +29,10 @@ function calculatePrice(month, days) {
                             : days > 14 ? (apartmentPrice * days) - (apartmentPrice * days * .1)
                             : apartmentPrice * days
     } else if (month === 'June' || month === 'September') {
+        if (days > 30) {
+            console.log("Please enter a valid number of days not greater than 30");
+            return false;
+        }
         studioPrice = 75.20;
         apartmentPrice = 68.70;
         totalStudio =  days > 14 ? (studioPrice * days) - (studioPrice * days * .2)
@@ -32,17 +40,19 @@ function calculatePrice(month, days) {
         totalApartment = days > 14 ? (apartmentPrice * days) - (apartmentPrice * days * .1)
                             : apartmentPrice * days
     } else {
+        if (days > 31) {
+            console.log("Please enter a valid number of days not greater than 31");
+            return false;
+        }
         totalStudio = studioPrice * days
         totalApartment = days > 14 ? (apartmentPrice * days) - (apartmentPrice * days * .1)
         : apartmentPrice * days
     }
 
-    return [totalStudio, totalApartment]
+    console.log(`Apartment: ${totalApartment.toFixed(2)} NGN`);
+    console.log(`Studio: ${totalStudio.toFixed(2)} NGN`);
 }
 
-let [s,a] = [...calculatePrice('May', 15)];
-let [s2,a2] = [...calculatePrice('June', 14)];
-let [s3,a3] = [...calculatePrice('August', 20)];
-console.log(`Apartment: ${a.toFixed(2)} \n Studio: ${s.toFixed(2)}`);
-console.log(`Apartment: ${a2.toFixed(2)} \n Studio: ${s2.toFixed(2)}`);
-console.log(`Apartment: ${a3.toFixed(2)} \n Studio: ${s3.toFixed(2)}`);
+calculatePrice('May', 30)
+calculatePrice('June', 31);
+calculatePrice('August', 20)
