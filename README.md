@@ -1,2 +1,2 @@
-# assessment_6
+# Hotel Room
 Solution To Hotel Room Problem
