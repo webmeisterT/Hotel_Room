@@ -56,3 +56,6 @@ function calculatePrice(month, days) {
 calculatePrice('May', 30)
 calculatePrice('June', 31);
 calculatePrice('August', 20)
+
+
+
